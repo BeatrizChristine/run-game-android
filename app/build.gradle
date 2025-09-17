@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services' // Apply the Google Services plugin
+    // If you are using Kotlin, add the Kotlin Android plugin
+    // id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'br.ifam.rungame'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "br.ifam.rungame"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // If using Kotlin, you might want to add kotlinOptions as well:
+    // kotlinOptions {
+    //     jvmTarget = '1.8'
+    // }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Firebase
+    // Import the BoM for the Firebase platform (Bill of Materials)
+    // CHECK FOR THE LATEST VERSION of the BOM from the Firebase documentation.
+    // As of early 2024, versions are often 32.7.0 or higher.
+    implementation platform('com.google.firebase:firebase-bom:32.7.0') // Example: Use a recent BOM version
+
+    // Declare individual Firebase dependencies WITHOUT versions (BoM manages them)
+    // Add the Firebase products you want to use.
+    // It's generally recommended to include firebase-analytics.
+    implementation 'com.google.firebase:firebase-analytics' // Or 'com.google.firebase:firebase-analytics-ktx' if using Kotlin extensively
+    implementation 'com.google.firebase:firebase-auth'       // Or 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-database'   // Or 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-storage'    // Or 'com.google.firebase:firebase-storage-ktx'
+    // The explicit 'com.google.firebase:firebase-database-ktx' you had is good if you're using Kotlin.
+    // If you declare the -ktx versions above, you don't need this separate one unless it's for a different purpose.
+
+    // Implementação GIF
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.23'
+}
